@@ -1,0 +1,431 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Caveat:wght@400;600;700&family=Bangers&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(60, 20%, 98%);
+  --foreground: hsl(0, 0%, 17%);
+  --muted: hsl(60, 4.8%, 95.9%);
+  --muted-foreground: hsl(25, 5.3%, 44.7%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(20, 14.3%, 4.1%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(20, 14.3%, 4.1%);
+  --border: hsl(20, 5.9%, 90%);
+  --input: hsl(20, 5.9%, 90%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(60, 4.8%, 95.9%);
+  --secondary-foreground: hsl(24, 9.8%, 10%);
+  --accent: hsl(60, 4.8%, 95.9%);
+  --accent-foreground: hsl(24, 9.8%, 10%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(20, 14.3%, 4.1%);
+  --radius: 0.5rem;
+
+  /* custom startup colors */
+  --ink: hsl(0, 0%, 17%);
+  --marker-blue: hsl(207, 90%, 54%);
+  --red-pen: hsl(0, 73%, 56%);
+  --highlighter: hsl(35, 86%, 51%);
+  --purple-marker: hsl(283, 39%, 53%);
+  --green-pen: hsl(145, 63%, 42%);
+  --paper: hsl(60, 20%, 98%);
+  --notebook-lines: hsl(0, 0%, 91%);
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Kalam', cursive;
+    background-image: 
+      linear-gradient(to right, hsl(0, 0%, 91%) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(0, 0%, 91%) 1px, transparent 1px),
+      radial-gradient(circle at 20% 30%, rgba(72, 144, 226, 0.1) 2px, transparent 2px),
+      radial-gradient(circle at 80% 70%, rgba(251, 146, 60, 0.1) 2px, transparent 2px),
+      radial-gradient(circle at 40% 80%, rgba(239, 68, 68, 0.1) 2px, transparent 2px);
+    background-size: 20px 20px, 20px 20px, 80px 80px, 120px 120px, 100px 100px;
+    background-color: hsl(60, 20%, 98%);
+    position: relative;
+  }
+  
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    background-image: 
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Ctext x='10' y='20' font-family='Arial' font-size='12' fill='%23ddd' opacity='0.3'%3E★%3C/text%3E%3Ctext x='70' y='80' font-family='Arial' font-size='10' fill='%23ddd' opacity='0.3'%3E♦%3C/text%3E%3Ctext x='30' y='60' font-family='Arial' font-size='14' fill='%23ddd' opacity='0.3'%3E♪%3C/text%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    animation: float-doodles 30s linear infinite;
+  }
+  
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    background-image: 
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Ctext x='20' y='40' font-family='Arial' font-size='16' fill='%23ccc' opacity='0.2'%3E~%3C/text%3E%3Ctext x='100' y='100' font-family='Arial' font-size='12' fill='%23ccc' opacity='0.2'%3E♡%3C/text%3E%3Ctext x='60' y='120' font-family='Arial' font-size='14' fill='%23ccc' opacity='0.2'%3E✓%3C/text%3E%3C/svg%3E");
+    background-size: 250px 250px;
+    animation: float-doodles 25s linear infinite reverse;
+  }
+}
+
+@layer components {
+  .font-kalam {
+    font-family: 'Kalam', cursive;
+  }
+  
+  .font-caveat {
+    font-family: 'Caveat', cursive;
+  }
+  
+  .font-bangers {
+    font-family: 'Bangers', cursive;
+  }
+  
+  .text-ink {
+    color: hsl(0, 0%, 17%);
+  }
+  
+  .text-marker-blue {
+    color: hsl(207, 90%, 54%);
+  }
+  
+  .text-red-pen {
+    color: hsl(0, 73%, 56%);
+  }
+  
+  .text-highlighter {
+    color: hsl(35, 86%, 51%);
+  }
+  
+  .text-purple-marker {
+    color: hsl(283, 39%, 53%);
+  }
+  
+  .text-green-pen {
+    color: hsl(145, 63%, 42%);
+  }
+  
+  .bg-paper {
+    background-color: hsl(60, 20%, 98%);
+  }
+  
+  .bg-notebook-lines {
+    background-color: hsl(0, 0%, 91%);
+  }
+  
+  .bg-marker-blue {
+    background-color: hsl(207, 90%, 54%);
+  }
+  
+  .bg-red-pen {
+    background-color: hsl(0, 73%, 56%);
+  }
+  
+  .bg-highlighter {
+    background-color: hsl(35, 86%, 51%);
+  }
+  
+  .bg-purple-marker {
+    background-color: hsl(283, 39%, 53%);
+  }
+  
+  .bg-green-pen {
+    background-color: hsl(145, 63%, 42%);
+  }
+  
+  .sketchy-border {
+    border: 3px solid hsl(0, 0%, 17%);
+    border-radius: 15px;
+    position: relative;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  
+  .sketchy-border::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border: 2px solid hsl(0, 0%, 17%);
+    border-radius: 18px;
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  
+  .tape-element {
+    position: relative;
+  }
+  
+  .tape-element::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 30px;
+    height: 20px;
+    background: linear-gradient(45deg, #F4F4F4, #E0E0E0);
+    transform: rotate(15deg);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    z-index: 10;
+  }
+  
+  .handwritten-underline {
+    position: relative;
+  }
+  
+  .handwritten-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, hsl(207, 90%, 54%), hsl(207, 90%, 54%) 80%, transparent);
+    border-radius: 2px;
+    transform: rotate(-0.5deg);
+  }
+  
+  .doodle-star {
+    position: relative;
+  }
+  
+  .doodle-star::before {
+    content: '★';
+    position: absolute;
+    top: -20px;
+    right: -15px;
+    color: hsl(35, 86%, 51%);
+    font-size: 24px;
+    transform: rotate(15deg);
+    animation: sparkle 3s ease-in-out infinite;
+  }
+  
+  .margin-doodle {
+    position: absolute;
+    left: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.6;
+    font-size: 20px;
+    z-index: 5;
+  }
+  
+  .wiggle {
+    animation: wiggle 2s ease-in-out infinite;
+  }
+  
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  
+  .bounce-crazy {
+    animation: bounce-crazy 3s ease-in-out infinite;
+  }
+  
+  .shake-text {
+    animation: shake-text 4s ease-in-out infinite;
+  }
+  
+  .wobble-card {
+    animation: wobble-card 6s ease-in-out infinite;
+  }
+  
+  .scribble-line {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .scribble-line::before {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, 
+      hsl(207, 90%, 54%) 0%, 
+      hsl(207, 90%, 54%) 20%, 
+      transparent 25%, 
+      hsl(0, 73%, 56%) 30%, 
+      hsl(0, 73%, 56%) 50%, 
+      transparent 55%, 
+      hsl(35, 86%, 51%) 60%, 
+      hsl(35, 86%, 51%) 80%, 
+      transparent 85%, 
+      hsl(145, 63%, 42%) 90%, 
+      hsl(145, 63%, 42%) 100%);
+    transform: rotate(-1deg);
+    animation: scribble-draw 8s ease-in-out infinite;
+  }
+  
+  .arrow-doodle {
+    position: relative;
+  }
+  
+  .arrow-doodle::after {
+    content: '↗';
+    position: absolute;
+    top: -25px;
+    right: -20px;
+    color: hsl(0, 73%, 56%);
+    font-size: 20px;
+    transform: rotate(25deg);
+    animation: arrow-bounce 2s ease-in-out infinite;
+  }
+  
+  .circle-doodle {
+    position: relative;
+  }
+  
+  .circle-doodle::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border: 2px dashed hsl(283, 39%, 53%);
+    border-radius: 50%;
+    animation: circle-rotate 8s linear infinite;
+    opacity: 0.4;
+  }
+  
+  .explosion-stars {
+    position: relative;
+  }
+  
+  .explosion-stars::before {
+    content: '✨⭐💫✨';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+    animation: explosion-float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float-doodles {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(180deg); }
+    100% { transform: translateY(0px) rotate(360deg); }
+  }
+  
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(2deg); }
+    75% { transform: rotate(-2deg); }
+  }
+  
+  @keyframes sparkle {
+    0%, 100% { opacity: 0.7; transform: rotate(15deg) scale(1); }
+    50% { opacity: 1; transform: rotate(15deg) scale(1.2); }
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% { 
+      box-shadow: 0 0 5px rgba(72, 144, 226, 0.3), 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    50% { 
+      box-shadow: 0 0 20px rgba(72, 144, 226, 0.6), 0 8px 12px -2px rgba(0, 0, 0, 0.2);
+    }
+  }
+  
+  @keyframes bounce-crazy {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(-5px) rotate(1deg); }
+    50% { transform: translateY(-10px) rotate(0deg); }
+    75% { transform: translateY(-5px) rotate(-1deg); }
+  }
+  
+  @keyframes shake-text {
+    0%, 100% { transform: translateX(0px); }
+    10% { transform: translateX(-1px); }
+    20% { transform: translateX(1px); }
+    30% { transform: translateX(-1px); }
+    40% { transform: translateX(1px); }
+    50% { transform: translateX(0px); }
+    60% { transform: translateX(1px); }
+    70% { transform: translateX(-1px); }
+    80% { transform: translateX(1px); }
+    90% { transform: translateX(-1px); }
+  }
+  
+  @keyframes wobble-card {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(0.5deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(-0.5deg); }
+  }
+  
+  @keyframes scribble-draw {
+    0% { width: 0%; }
+    50% { width: 100%; }
+    100% { width: 0%; }
+  }
+  
+  @keyframes arrow-bounce {
+    0%, 100% { transform: rotate(25deg) translateY(0px); }
+    50% { transform: rotate(25deg) translateY(-5px); }
+  }
+  
+  @keyframes circle-rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  @keyframes explosion-float {
+    0%, 100% { transform: translateX(-50%) translateY(0px) scale(1); }
+    50% { transform: translateX(-50%) translateY(-10px) scale(1.2); }
+  }
+  
+  @media (max-width: 768px) {
+    .margin-doodle {
+      left: -20px;
+      font-size: 16px;
+    }
+  }
+}

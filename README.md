@@ -12,7 +12,6 @@ A startup simulator game built with React and TypeScript. Players build fictiona
 * Track funding, stress, users, employees, and more
 * Replayable runs with multiple endings
 * Shareable end-of-run result cards
-* LocalStorage-based save system
 * Mobile-friendly, responsive design
 
 ---
